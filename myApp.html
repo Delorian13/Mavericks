@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Themed App</title>
+
+    <!-- jQuery Mobile Core Styles -->
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+
+    <!-- Your Custom Theme Styles -->
+    <link rel="stylesheet" href="/jquery-mobile-theme-073539-0/themes/MavPage.min.css">
+
+    <!-- jQuery and jQuery Mobile Scripts -->
+    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    
+    <script>
+        $(document).on('pagecreate', '#home', function() {
+            // Save user preferences to Web Storage
+            $('#saveData').on('click', function() {
+                localStorage.setItem('userData', 'Mavs fan preferences saved!');
+                alert('User data saved!');
+            });
+
+            // Display saved data when the page is loaded
+            if(localStorage.getItem('userData')) {
+                $('#storedData').text(localStorage.getItem('userData'));
+            }
+        });
+    </script>
+</head>
+
+<body>
+
+  <!-- Home Page with Panel Navigation -->
+  <div data-role="page" id="home">
+    <div data-role="header">
+      <h1>Welcome to the Mavs Fan Page</h1>
+
+      <!-- Panel Button to Open Slide-in Menu -->
+      <a href="#panel" class="ui-btn ui-btn-inline ui-icon-bars ui-btn-icon-left">Menu</a>
+    </div>
+
+    <!-- Panel: Slide-in Menu -->
+    <div data-role="panel" id="panel" data-display="push">
+      <ul data-role="listview" data-inset="true">
+        <li><a href="#news">Latest News</a></li>
+        <li><a href="#schedule">Game Schedule</a></li>
+        <li><a href="#stats">Team Stats</a></li>
+        <li><a href="#forum">Fan Forum</a></li>
+      </ul>
+    </div>
+
+    <!-- Content -->
+    <div data-role="content">
+      <p>Stay updated with the latest Mavs news, game schedules, and fan interactions!</p>
+
+      <!-- Grid Layout for Navigation Links -->
+      <div class="ui-grid-a">
+        <div class="ui-block-a">
+          <a href="#news" class="ui-btn ui-btn-inline">Latest News</a>
+        </div>
+        <div class="ui-block-b">
+          <a href="#schedule" class="ui-btn ui-btn-inline">Game Schedule</a>
+        </div>
+        <div class="ui-block-a">
+          <a href="#stats" class="ui-btn ui-btn-inline">Team Stats</a>
+        </div>
+        <div class="ui-block-b">
+          <a href="#forum" class="ui-btn ui-btn-inline">Fan Forum</a>
+        </div>
+      </div>
+
+      <!-- Save User Preferences Button -->
+      <a href="#" id="saveData" class="ui-btn ui-btn-inline">Save My Preferences</a>
+      
+      <p id="storedData"></p> <!-- Display saved user data -->
+
+      <!-- Sections: News, Schedule, Stats, Forum -->
+      <div data-role="collapsible" id="news">
+        <h3>Latest News</h3>
+        <ul data-role="listview">
+          <li><a href="#">Mavs Win Against Lakers - December 12, 2024</a></li>
+          <li><a href="#">Luka Doncic Named Player of the Week</a></li>
+          <li><a href="#">The Mavs Prepare for Upcoming Road Trip</a></li>
+        </ul>
+      </div>
+
+      <div data-role="collapsible" id="schedule">
+        <h3>Upcoming Games</h3>
+        <ul data-role="listview">
+          <li>December 15, 2024 - Mavs vs. Warriors</li>
+          <li>December 18, 2024 - Mavs vs. Suns</li>
+          <li>December 22, 2024 - Mavs vs. Rockets</li>
+        </ul>
+      </div>
+
+      <div data-role="collapsible" id="stats">
+        <h3>Team Stats</h3>
+        <p>Player Stats:</p>
+        <ul data-role="listview">
+          <li>Luka Doncic: 28.5 PPG</li>
+          <li>Kyrie Irving: 23.1 PPG</li>
+          <li>Christian Wood: 16.8 PPG</li>
+        </ul>
+      </div>
+
+      <div data-role="collapsible" id="forum">
+        <h3>Fan Forum</h3>
+        <ul data-role="listview">
+          <li><a href="#">What’s your prediction for tonight's game?</a></li>
+          <li><a href="#">Luka’s MVP campaign – Discuss!</a></li>
+          <li><a href="#">Best Mavs highlights of all time?</a></li>
+        </ul>
+        <a href="#" class="ui-btn ui-btn-inline">Post a New Topic</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
